@@ -6,4 +6,4 @@ from profiles.serializers import PatientProfileSerializer
 
 class PatientProfileView(ModelViewSet):
     queryset = PatientProfile.objects.all()
-    serializer_class = PatientProfile
+    serializer_class = PatientProfileSerializer
