@@ -1,18 +1,19 @@
 from django.db import models
-from django.core.validators import MaxLengthValidator
+from django.core.validators import MaxLengthValidator, RegexValidator
+
 
 class PatientProfile(models.Model):
     GENDERS = [
-        ("M", "Male"),
-        ("F", "Female"),
-        ("O", "Other"),
+        ("male", "Male"),
+        ("female", "Female"),
+        ("other", "Other"),
     ]
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     gender = models.CharField(max_length=10, choices=GENDERS, blank=True)
     date_of_birth = models.DateField(null=True, blank=True)
     address = models.TextField(blank=True)
-    phone_numeber = models.IntegerField(blank=True, null=True, validators=[MaxLengthValidator(10)])
+    phone_number = models.CharField(max_length=12, blank=True, null=True)
     email = models.EmailField(max_length=255)
 
     def __str__(self):
